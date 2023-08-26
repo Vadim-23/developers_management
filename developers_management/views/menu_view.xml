@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <menuitem name="Developers Management" id="developers_management_menu"
+              action="developers_management_act_window"
+              web_icon="developers_management,static/description/icon.png"
+              sequence="1"/>
+
+    <menuitem name="Company" id="developers_management_company_menu"
+              parent="developers_management_menu" sequence="500"
+              action="developers_management_act_window_company"/>
+</odoo>

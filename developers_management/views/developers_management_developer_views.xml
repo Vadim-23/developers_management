@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="developers_management_form_view" model="ir.ui.view">
+        <field name="name">developers_management.developer.form</field>
+        <field name="model">developers_management.developer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="image_1920" widget="image" class="oe_avatar"
+                           options="{&quot;preview_image&quot;: &quot;avatar_128&quot;}"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name"
+                                   placeholder="Vadim Mudruk"/>
+                        </h1>
+                        <label for="position"/>
+                        <h2>
+                            <field name="position"
+                                   placeholder="Developer"/>
+                        </h2>
+                    </div>
+                    <notebook>
+                        <page string="Work Info">
+                            <group>
+                                <field name="company_id"/>
+                                <field name="position"/>
+                                <field name="type"/>
+                                <field name="global_identification"/>
+                            </group>
+                        </page>
+                        <page string="Contact Info">
+                            <group>
+                                <field name="phone"
+                                       attrs="{'invisible': [('type', '=', 'out-stuff')]}"/>
+                                <field name="email"/>
+                                <field name="address"/>
+                                <field name="birthdate"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="developers_management_tree_view" model="ir.ui.view">
+        <field name="name">developers_management.developer.tree</field>
+        <field name="model">developers_management.developer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="phone" optional="show"/>
+                <field name="company_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="developers_management_search_view" model="ir.ui.view">
+        <field name="name">Developers Management</field>
+        <field name="model">developers_management.developer</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="type"/>
+                <field name="phone"/>
+                <filter name="group_by_type" string="Group By Type"
+                        context="{'group_by':'type'}"/>
+
+            </search>
+        </field>
+    </record>
+
+
+    <record id="developers_management_act_window"
+            model="ir.actions.act_window">
+        <field name="name">Developers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">developers_management.developer</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new ModelTitle.
+            </p>
+        </field>
+    </record>
+
+
+</odoo>
